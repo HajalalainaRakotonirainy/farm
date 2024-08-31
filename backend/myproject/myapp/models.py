@@ -4,9 +4,10 @@ from django.db import models
 
 class Betail(models.Model):
     CHOIX_SEXE = (
-        ("MALE", "male"),
-        ("FEMELLE", "femelle"),
+        ("male", "Male"),
+        ("femelle", "Femelle"),
     )
+    tag = models.CharField(max_length=20)
     race = models.CharField(max_length=100)
     nom = models.CharField(max_length=50)
     sexe = models.CharField(
@@ -15,5 +16,5 @@ class Betail(models.Model):
     )
     date_naissance = models.DateField()
     date_entre_farm = models.DateField()
-    mere = models.IntegerField()
-    pere = models.IntegerField()
+    mere_tag = models.CharField(max_length=20)
+    pere_tag = models.CharField(max_length=20)

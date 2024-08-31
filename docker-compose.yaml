@@ -11,16 +11,16 @@ services:
     working_dir: /frontend
     command: npm run dev
 
-  # backend:
-  #   image: python:latest
-  #   build: ./backend
-  #   container_name: backend-farm
-  #   expose:
-  #     - 8000
-  #   volumes:
-  #     - ./backend/myproject/:/app
-  #   working_dir: /app
-  #   command: python manage.py runserver
+  backend:
+    # image: backend-farm:latest
+    build: ./backend
+    container_name: backend-farm
+    ports:
+      - 8000:8000
+    volumes:
+      - ./backend/myproject/:/app
+    # working_dir: /app
+    command: python manage.py runserver
 
   postgres:
     image: postgres:latest

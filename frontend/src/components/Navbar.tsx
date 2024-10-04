@@ -1,3 +1,8 @@
+"use client";
+
+import { icon } from "@fortawesome/fontawesome-svg-core";
+import { faContactBook, faDollar, faHome, faInfo, faMoneyBill } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Disclosure,
   DisclosureButton,
@@ -8,21 +13,28 @@ import {
   MenuItems,
 } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { useRouter } from "next/navigation";
+const Cookies = require("js-cookie");
 
 const navigation = [
-  { name: "Home", href: "#", current: false },
-  { name: "Finance", href: "#", current: false },
-  { name: "Information", href: "#", current: false },
-  { name: "Contact", href: "#", current: false },
+  { name: "Home", href: "/", current: false, icon: faHome },
+  { name: "Finance", href: "#", current: false, icon: faMoneyBill },
+  { name: "Information", href: "#", current: false, icon: faInfo },
+  { name: "Contact", href: "#", current: false, icon: faContactBook },
 ];
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default () => {
+export default function Navbar() {
+  const router = useRouter();
+  function handleClick() {
+    Cookies.remove("token");
+    router.push("/auth/login");
+  }
   return (
-    <Disclosure as="nav" className="bg-custom_blue mb-4">
+    <Disclosure as="nav" className="bg-blue-600 mb-4">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -45,7 +57,7 @@ export default () => {
               <img
                 alt="Your Company"
                 src="/images/logo.jpg"
-                className="h-8 w-auto"
+                className="h-8 w-auto rounded-lg"
               />
             </div>
             <div className="hidden sm:ml-6 sm:block">
@@ -58,10 +70,11 @@ export default () => {
                     className={classNames(
                       item.current
                         ? "bg-gray-900 text-white"
-                        : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                        : "text-gray-300 hover:bg-slate-400 hover:text-white",
                       "rounded-md px-3 py-2 text-sm font-medium"
                     )}
                   >
+                    <FontAwesomeIcon icon={item.icon} />
                     {item.name}
                   </a>
                 ))}
@@ -114,6 +127,7 @@ export default () => {
                 <MenuItem>
                   <a
                     href="#"
+                    onClick={handleClick}
                     className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
                   >
                     Sign out
@@ -147,4 +161,4 @@ export default () => {
       </DisclosurePanel>
     </Disclosure>
   );
-};
+}

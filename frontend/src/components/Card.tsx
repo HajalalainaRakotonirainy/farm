@@ -1,59 +1,59 @@
 import Image from "next/image";
 
-export default () => {
+export default function Card () {
   const cardData = [
     {
       id: 1,
-      title: "Card 1",
-      description: "This is the first card",
+      title: "Bétails",
+      lien: "/betail",
       image: "/images/betail.jpg",
     },
     {
       id: 2,
-      title: "Card 2",
-      description: "This is the second card",
+      title: "Employées",
+      lien: "/employee",
       image: "/images/employe.jpg",
     },
     {
       id: 3,
-      title: "Card 3",
-      description: "This is the third card",
+      title: "Alimentations",
+      lien: "/alimentation",
       image: "/images/alimentation.jpg",
     },
     {
       id: 4,
-      title: "Card 1",
-      description: "This is the first card",
+      title: "Médecines",
+      lien: "/medecine",
       image: "/images/medecine.jpg",
     },
     {
       id: 5,
-      title: "Card 2",
-      description: "This is the second card",
+      title: "Matériels",
+      lien: "/materiel",
       image: "/images/materiel.jpg",
     },
     {
       id: 6,
-      title: "Card 3",
-      description: "This is the third card",
+      title: "Productions",
+      lien: "/production",
       image: "/images/production.jpg",
     },
     {
       id: 7,
-      title: "Card 1",
-      description: "This is the first card",
+      title: "Calendriers",
+      lien: "/calendrier",
       image: "/images/calendrier.png",
     },
     {
       id: 8,
-      title: "Card 2",
-      description: "This is the second card",
+      title: "Finances",
+      lien: "/finance",
       image: "/images/finance.jpg",
     },
     {
       id: 9,
-      title: "Card 3",
-      description: "This is the third card",
+      title: "Tableau de bords",
+      lien: "/dashboard",
       image: "/images/dashboard.png",
     },
   ];
@@ -72,10 +72,10 @@ export default () => {
             />
             <div className="flex flex-col flex-grow p-3 items-center">
               <a
-                href="#"
-                className="mt-3 text-custom_green dark:text-white hover:text-blue-600 inline-flex"
+                href={card.lien}
+                className="font-size-lg mt-3 text-custom_green dark:text-white hover:text-blue-600 inline-flex"
               >
-                Learn More
+                { card.title }
               </a>
             </div>
           </div>

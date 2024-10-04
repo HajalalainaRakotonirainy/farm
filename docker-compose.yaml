@@ -2,8 +2,6 @@ services:
   frontend:
     image: node:lts
     container_name: frontend-farm
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     ports:
       - ${FRONTEND_PORT}:3000
     volumes:
@@ -12,15 +10,15 @@ services:
     command: npm run dev
 
   backend:
-    # image: backend-farm:latest
-    build: ./backend
+    image: backend-farm:latest
+    # build: ./backend
     container_name: backend-farm
     ports:
-      - 8000:8000
+      - ${BACKEND_PORT}:8000
     volumes:
       - ./backend/myproject/:/app
     # working_dir: /app
-    command: python manage.py runserver
+    command: python manage.py runserver 0.0.0.0:${BACKEND_PORT}
 
   postgres:
     image: postgres:latest

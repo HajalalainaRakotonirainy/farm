@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { config } from '@fortawesome/fontawesome-svg-core';
+import '@fortawesome/fontawesome-svg-core/styles.css'; // Import the CSS
+config.autoAddCss = false; // Disable the auto-adding of CSS to avoid conflicts
+import 'datatables.net-dt/css/dataTables.dataTables.css';
 
 const inter = Inter({ subsets: ["latin"] });
 

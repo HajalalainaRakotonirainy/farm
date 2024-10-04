@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-sem&35w^2ju&-2lod^ujubf500srq(el*e^$!h!-s+m&e-7)h&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['backend-farm', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -51,7 +52,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'myproject.urls'
@@ -84,7 +84,7 @@ DATABASES = {
         'NAME': 'gestion_farm',
         'USER': 'postgres',
         'PASSWORD': '28062000',
-        'HOST': 'localhost',  # Set to empty string for localhost.
+        'HOST': 'postgres-farm',  # Set to empty string for localhost.
         'PORT': '5432',       # Set to empty string for default.
     }
 }
@@ -141,5 +141,27 @@ REST_FRAMEWORK = {
 }
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000'
+    'http://localhost:3000',
+    'http://localhost:8000',
+    'http://0.0.0.0:3000',
+    'http://0.0.0.0:8000',
 ]
+
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOW_HEADERS = [
+    'content-type',
+    'authorization',
+    'x-csrftoken',
+]
+
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'DELETE',
+    'OPTIONS',
+]
+

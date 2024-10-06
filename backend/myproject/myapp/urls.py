@@ -19,4 +19,5 @@ urlpatterns = [
     path('user', UserView.as_view()),
     path('financial-summary/', financial_summary),
     path('count-summary/', count_summary),
+    path('get-medicament/', get_medicament),
 ]

@@ -13,6 +13,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 const Cookies = require("js-cookie");
 import { subMonths, format } from "date-fns";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 
 const AdminPage = () => {
   const [count, setCount] = useState({
@@ -75,44 +77,48 @@ const AdminPage = () => {
     fetchFinancialData();
   }, []);
   return (
-    <div className="p-4 flex gap-4 flex-col md:flex-row">
-      {/* LEFT */}
-      <div className="w-full flex flex-col gap-8">
-        {/* USER CARDS */}
-        <div className="flex gap-4 justify-between flex-wrap">
-          <UserCard
-            count={count.betailCount}
-            type="Bétails"
-            icon={faMarsAndVenus}
-          />
-          <UserCard
-            count={count.betailMaleCount}
-            type="Bétails male"
-            icon={faMars}
-          />
-          <UserCard
-            count={count.betailFemelleCount}
-            type="Bétails femelle"
-            icon={faVenus}
-          />
-          <UserCard
-            count={count.employeeCount}
-            type="Employées"
-            icon={faUsers}
-          />
-        </div>
-        {/* MIDDLE CHARTS */}
-        <div className="flex gap-4 flex-col lg:flex-row">
-          {/* COUNT CHART */}
-          <div className="w-full lg:w-1/3 h-[450px]">
-            <CountChart dataCount={count} />
+    <div>
+      <Navbar />
+      <div className="p-4 flex gap-4 flex-col md:flex-row">
+        {/* LEFT */}
+        <div className="w-full flex flex-col gap-8">
+          {/* USER CARDS */}
+          <div className="flex gap-4 justify-between flex-wrap">
+            <UserCard
+              count={count.betailCount}
+              type="Bétails"
+              icon={faMarsAndVenus}
+            />
+            <UserCard
+              count={count.betailMaleCount}
+              type="Bétails male"
+              icon={faMars}
+            />
+            <UserCard
+              count={count.betailFemelleCount}
+              type="Bétails femelle"
+              icon={faVenus}
+            />
+            <UserCard
+              count={count.employeeCount}
+              type="Employées"
+              icon={faUsers}
+            />
           </div>
-          {/* ATTENDANCE CHART */}
-          <div className="w-full lg:w-2/3 h-[450px]">
-            <AttendanceChart dataSummary={dataSummary} />
+          {/* MIDDLE CHARTS */}
+          <div className="flex gap-4 flex-col lg:flex-row">
+            {/* COUNT CHART */}
+            <div className="w-full lg:w-1/3 h-[450px]">
+              <CountChart dataCount={count} />
+            </div>
+            {/* ATTENDANCE CHART */}
+            <div className="w-full lg:w-2/3 h-[450px]">
+              <AttendanceChart dataSummary={dataSummary} />
+            </div>
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

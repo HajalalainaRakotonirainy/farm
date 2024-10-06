@@ -11,7 +11,7 @@ import Swal from "sweetalert2";
 
 const Cookies = require("js-cookie");
 
-export default function Register() {
+export default () => {
   const params = useSearchParams();
   const router = useRouter();
   const id = params.get("id");

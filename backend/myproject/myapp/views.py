@@ -196,10 +196,21 @@ def financial_summary(request):
 
     # Calculating total revenue
     total_revenue = production_revenue 
+    
+    alimentations_data = list(alimentations.values('id', 'prix', 'poid'))
+    materiels_data = list(materiels.values('id', 'prix', 'nombre'))
+    medecines_data = list(medecines.values('id', 'prix'))
+    employees_data = list(employees.values('id', 'salaire'))
+    productions_data = list(productions.values('id', 'prix', 'quantite'))
 
     data = {
         'year': int(year),
         'month': int(month) if month else None,
+        'alimentations': alimentations_data,
+        'materiels': materiels_data,
+        'medecines': medecines_data,
+        'employees': employees_data,
+        'productions': productions_data, 
         'production_revenue': production_revenue,
         'materiel_expense': materiel_expense,
         'medecine_expense': medecine_expense,
@@ -227,3 +238,12 @@ def count_summary(request):
     }
     
     return Response(data)
+
+@api_view(['GET'])
+def get_medicament(request):
+    
+    tag = request.query_params.get('tag')
+    
+    medicament = list(Medicament.objects.filter(user=request.user).values('id', 'tag','raison', 'medicament', 'dosage', 'description', 'date'))
+    
+    return Response(medicament)

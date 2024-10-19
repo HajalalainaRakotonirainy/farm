@@ -19,12 +19,12 @@ const CountChart = ({dataCount} : {dataCount: any}) => {
     {
       name: "Femelle",
       count: dataCount.betailFemelleCount,
-      fill: "#FAE27C",
+      fill: "#7DD3FC",
     },
     {
       name: "Male",
       count: dataCount.betailMaleCount,
-      fill: "#C3EBFA",
+      fill: "#FAE27C",
     },
   ];
   return (
@@ -59,14 +59,14 @@ const CountChart = ({dataCount} : {dataCount: any}) => {
       {/* BOTTOM */}
       <div className="flex justify-center gap-16">
         <div className="flex flex-col gap-1">
-          <div className="w-5 h-5 bg-lamaSky rounded-full" />
+          <div className="w-5 h-5 bg-lamaYellow rounded-full" />
           <h1 className="font-bold">{dataCount.betailMaleCount}</h1>
-          <h2 className="text-xs text-gray-300">Male</h2>
+          <h2 className="text-xs">Male</h2>
         </div>
         <div className="flex flex-col gap-1">
-          <div className="w-5 h-5 bg-lamaYellow rounded-full" />
+          <div className="w-5 h-5 bg-sky-300 rounded-full" />
           <h1 className="font-bold">{dataCount.betailFemelleCount}</h1>
-          <h2 className="text-xs text-gray-300">Femelle</h2>
+          <h2 className="text-xs">Femelle</h2>
         </div>
       </div>
     </div>

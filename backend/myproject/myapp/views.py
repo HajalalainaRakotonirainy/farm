@@ -244,6 +244,6 @@ def get_medicament(request):
     
     tag = request.query_params.get('tag')
     
-    medicament = list(Medicament.objects.filter(user=request.user).values('id', 'tag','raison', 'medicament', 'dosage', 'description', 'date'))
+    medicament = list(Medicament.objects.filter(user=request.user, tag=tag).values('id', 'tag','raison', 'medicament', 'dosage', 'description', 'date'))
     
     return Response(medicament)

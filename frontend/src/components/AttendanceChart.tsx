@@ -46,7 +46,7 @@ const AttendanceChart = ({dataSummary}: {dataSummary:any}) => {
           />
           <Bar
             dataKey="expenses"
-            fill="#C3EBFA"
+            fill="#7DD3FC"
             legendType="circle"
             radius={[10, 10, 0, 0]}
           />
